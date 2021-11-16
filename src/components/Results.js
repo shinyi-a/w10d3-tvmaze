@@ -33,7 +33,7 @@ export default function Results(props) {
 
     const renderResult = searchedResults.map((data, index) => {
         return ( 
-        <div className={"moviePoster"} key={index}><a href="">
+        <div className={"moviePoster"} key={index}><a href="#" >
             {/* // onClick={ 
             //     () => { setChosenMovie(data) }
             // } 

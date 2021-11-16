@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './index';
+import './index.css';
 import Home from './components/Home'
 
 function App() {
