@@ -46,7 +46,7 @@ export default function Results(props) {
             // > */}
             <div onClick={() => setSelectedMovie(data)}>
                 <h3 style={{ textAlign: "center" }}>{data.show.name}</h3>
-                <img style={{width: "auto"}} src={data.show.image === null ? "no results" : data.show.image.medium} alt="No Image" />
+                <img style={{width: "auto"}} src={data.show.image === null ? "no results" : data.show.image.medium}/>
                 {/* <img style={{width: "auto"}} src={imgurl} /> */}
             </div>
         </div >
