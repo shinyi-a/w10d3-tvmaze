@@ -6,6 +6,8 @@ import Search from './Search';
 export default function Results(props) {
     // const [chosenMovie, setChosenMovie] = useContext();
     const [searchedResults, setSearchedResults] = useState([]);
+
+    const [selectedMovie, setSelectedMovie] = useState(null)
     // const movieData = createContext();
 
     // API CALL
@@ -24,7 +26,7 @@ export default function Results(props) {
         
         fetchedData();
 
-    }, [props.searchedTitle])
+    }, [])
 
     // CLICK EVENT
     const handleClick = () => {
@@ -32,19 +34,29 @@ export default function Results(props) {
     }
 
     const renderResult = searchedResults.map((data, index) => {
+        console.log('THIS IS DATA FROM ONE ITEM',data)
+        // let imgurl= data.show.image['medium'];
         return ( 
-        <div className={"moviePoster"} key={index}><a href="#" >
+        <div className={"moviePoster"} key={index} 
+
+        >
             {/* // onClick={ 
             //     () => { setChosenMovie(data) }
             // } 
             // > */}
+            <div onClick={() => setSelectedMovie(data)}>
                 <h3 style={{ textAlign: "center" }}>{data.show.name}</h3>
-                <img style={{width: "auto"}} src={data.show.image === null ? "https://t4.ftcdn.net/jpg/03/10/99/43/360_F_310994319_2UDbmr1UT6oncu4Mid7Ezmp5Mz1qvEso.jpg" : data.show.image.medium} alt="No Image" />
-                </a>
+                <img style={{width: "auto"}} src={data.show.image === null ? "no results" : data.show.image.medium} alt="No Image" />
+                {/* <img style={{width: "auto"}} src={imgurl} /> */}
+            </div>
         </div >
         )
         // }
     })
+
+    // const selectedMovieHTML = () => {
+    //     return <div><h1>Selected Movie Is working</h1></div>
+    // }
 
     return (
         <div className='container'>
@@ -52,7 +64,9 @@ export default function Results(props) {
                 <button className="searchagain"style={{display:"inline-block", marginBottom: '1rem'}} onClick={handleClick}>Search Again !</button>
                 <div className="results">
                     {renderResult === [] ? "Loading" : renderResult}
+                    {/* {selectedMovie === null ? "" : selectedMovieHTML} */}
                 </div>
         </div>
     )
 }
+
